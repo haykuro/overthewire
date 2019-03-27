@@ -317,6 +317,7 @@ class Bandit(object):
                 new_file = sh.recvline().decode('utf8').strip()
                 sh.sendline('mv %s ./data.bin' % new_file)
             elif 'ASCII text' in filetype:
+                # get the password
                 sh.sendline('cat ./data.bin | egrep -o "\w{32}"')
                 level13_password = sh.recvline().decode('utf8').strip()
                 break
