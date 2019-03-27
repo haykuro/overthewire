@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "5b37ec8f8dce0ff5aba49f0897703cd9f69ec861c3a698587c43c030e98d21c1"
+            "sha256": "627f610dc84dbedb2da60ad2232b8c70c7a1ea1abca2f3251f169c486ce52e3e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -88,6 +88,10 @@
             ],
             "index": "pypi",
             "version": "==1.5.0"
+        },
+        "pwntools3": {
+            "git": "https://github.com/arthaud/python3-pwntools.git",
+            "ref": "de2854460b30beb4909e5f87007258862338a456"
         },
         "pycparser": {
             "hashes": [

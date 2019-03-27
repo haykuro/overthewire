@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 cryptography = "*"
 logzero = "*"
+"pwntools3" = {git = "https://github.com/arthaud/python3-pwntools.git"}
 
 [dev-packages]
 
