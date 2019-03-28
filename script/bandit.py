@@ -20,6 +20,9 @@ def info(msg):
     logger.info(msg)
     print()
 
+def clean_password(password):
+    return password.decode('utf8').strip()
+
 # Bandit Class
 class Bandit(object):
     URL = 'bandit.labs.overthewire.org'
@@ -115,190 +118,58 @@ class Bandit(object):
 
     @staticmethod
     def level1(options):
-        level2_password = None
-
-        # wait for prompt
-        sh = options.get('shell').run('sh')
-        sh.recvuntil('$ ', timeout=3)
-
-        # get the password
-        sh.sendline('cat ./-')
-        level2_password = sh.recvline().decode('utf8').strip()
-
-        # close the shell
-        sh.close()
-
-        return level2_password
+        (res, exit_code) = options.get('shell').run_to_end('cat ./-')
+        return clean_password(res)
 
     @staticmethod
     def level2(options):
-        level3_password = None
-
-        # wait for prompt
-        sh = options.get('shell').run('sh')
-        sh.recvuntil('$ ', timeout=3)
-
-        # get the password
-        sh.sendline('cat ./spaces\ in\ this\ filename')
-        level3_password = sh.recvline().decode('utf8').strip()
-
-        # close the shell
-        sh.close()
-
-        return level3_password
+        (res, exit_code) = options.get('shell').run_to_end('cat ./spaces\ in\ this\ filename')
+        return clean_password(res)
 
     @staticmethod
     def level3(options):
-        level4_password = None
-
-        # wait for prompt
-        sh = options.get('shell').run('sh')
-        sh.recvuntil('$ ', timeout=3)
-
-        # get the password
-        sh.sendline('cat ./inhere/.hidden')
-        level4_password = sh.recvline().decode('utf8').strip()
-
-        # close the shell
-        sh.close()
-
-        return level4_password
+        (res, exit_code) = options.get('shell').run_to_end('cat ./inhere/.hidden')
+        return clean_password(res)
 
     @staticmethod
     def level4(options):
-        level5_password = None
-
-        # wait for prompt
-        sh = options.get('shell').run('sh')
-        sh.recvuntil('$ ', timeout=3)
-
-        # get the password
-        sh.sendline('find ./inhere -type f -exec egrep -o "^\w{32}$" "{}" \;')
-        level5_password = sh.recvline().decode('utf8').strip()
-
-        # close the shell
-        sh.close()
-
-        return level5_password
+        (res, exit_code) = options.get('shell').run_to_end('find ./inhere -type f -exec egrep -o "^\w{32}$" "{}" \;')
+        return clean_password(res)
 
     @staticmethod
     def level5(options):
-        level6_password = None
-
-        # wait for prompt
-        sh = options.get('shell').run('sh')
-        sh.recvuntil('$ ', timeout=3)
-
-        # get the password
-        sh.sendline('find ./inhere -type f -exec egrep -o "^\w{32}$" "{}" \;')
-        level6_password = sh.recvline().decode('utf8').strip()
-
-        # close the shell
-        sh.close()
-
-        return level6_password
+        (res, exit_code) = options.get('shell').run_to_end('find ./inhere -type f -exec egrep -o "^\w{32}$" "{}" \;')
+        return clean_password(res)
 
     @staticmethod
     def level6(options):
-        level7_password = None
-
-        # wait for prompt
-        sh = options.get('shell').run('sh')
-        sh.recvuntil('$ ', timeout=3)
-
-        # get the password
-        sh.sendline('cat $(find / -user bandit7 -group bandit6 -size 33c 2>/dev/null)')
-        level7_password = sh.recvline().decode('utf8').strip()
-
-        # close the shell
-        sh.close()
-
-        return level7_password
+        (res, exit_code) = options.get('shell').run_to_end('cat $(find / -user bandit7 -group bandit6 -size 33c 2>/dev/null)')
+        return clean_password(res)
 
     @staticmethod
     def level7(options):
-        level8_password = None
-
-        # wait for prompt
-        sh = options.get('shell').run('sh')
-        sh.recvuntil('$ ', timeout=3)
-
-        # get the password
-        sh.sendline('cat ./data.txt | grep millionth | egrep -o "\w{32}"')
-        level8_password = sh.recvline().decode('utf8').strip()
-
-        # close the shell
-        sh.close()
-
-        return level8_password
+        (res, exit_code) = options.get('shell').run_to_end('cat ./data.txt | grep millionth | egrep -o "\w{32}"')
+        return clean_password(res)
 
     @staticmethod
     def level8(options):
-        level9_password = None
-
-        # wait for prompt
-        sh = options.get('shell').run('sh')
-        sh.recvuntil('$ ', timeout=3)
-
-        # get the password
-        sh.sendline('sort data.txt | uniq -u')
-        level9_password = sh.recvline().decode('utf8').strip()
-
-        # close the shell
-        sh.close()
-
-        return level9_password
+        (res, exit_code) = options.get('shell').run_to_end('sort data.txt | uniq -u')
+        return clean_password(res)
 
     @staticmethod
     def level9(options):
-        level10_password = None
-
-        # wait for prompt
-        sh = options.get('shell').run('sh')
-        sh.recvuntil('$ ', timeout=3)
-
-        # get the password
-        sh.sendline('strings data.txt | grep === | egrep -o "\w{32}"')
-        level10_password = sh.recvline().decode('utf8').strip()
-
-        # close the shell
-        sh.close()
-
-        return level10_password
+        (res, exit_code) = options.get('shell').run_to_end('strings data.txt | grep === | egrep -o "\w{32}"')
+        return clean_password(res)
 
     @staticmethod
     def level10(options):
-        level11_password = None
-
-        # wait for prompt
-        sh = options.get('shell').run('sh')
-        sh.recvuntil('$ ', timeout=3)
-
-        # get the password
-        sh.sendline('cat data.txt | base64 -d | egrep -o "\w{32}"')
-        level11_password = sh.recvline().decode('utf8').strip()
-
-        # close the shell
-        sh.close()
-
-        return level11_password
+        (res, exit_code) = options.get('shell').run_to_end('cat data.txt | base64 -d | egrep -o "\w{32}"')
+        return clean_password(res)
 
     @staticmethod
     def level11(options):
-        level12_password = None
-
-        # wait for prompt
-        sh = options.get('shell').run('sh')
-        sh.recvuntil('$ ', timeout=3)
-
-        # get the password
-        sh.sendline('python -c "print(open(\'./data.txt\').read().decode(\'rot13\'))" | egrep -o "\w{32}"')
-        level12_password = sh.recvline().decode('utf8').strip()
-
-        # close the shell
-        sh.close()
-
-        return level12_password
+        (res, exit_code) = options.get('shell').run_to_end('python -c "print(open(\'./data.txt\').read().decode(\'rot13\'))" | egrep -o "\w{32}"')
+        return clean_password(res)
 
     @staticmethod
     def level12(options):
