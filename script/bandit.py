@@ -219,18 +219,8 @@ class Bandit(object):
 
     @staticmethod
     def level13(options):
-        # wait for prompt
-        sh = options.get('shell').run('sh')
-        sh.recvuntil('$ ', timeout=3)
-
-        # get the password
-        sh.sendline('ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -q -i sshkey.private -l bandit14 0 cat /etc/bandit_pass/bandit14')
-        level14_password = sh.recvline().decode('utf8').strip()
-
-        # close the shell
-        sh.close()
-
-        return level14_password
+        (res, exit_code) = options.get('shell').run_to_end('ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -q -i sshkey.private -l bandit14 0 cat /etc/bandit_pass/bandit14')
+        return clean_password(res)
 
     @staticmethod
     def level14(options):
