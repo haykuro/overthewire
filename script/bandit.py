@@ -54,14 +54,32 @@ class Bandit(object):
 
             info('Hacking level%s..' % hack_level)
 
-            shell = ssh(
-                'bandit%s' % hack_level,
-                host=Bandit.URL,
-                port=Bandit.PORT,
-                password=last_pass
-            )
+            if 'RSA PRIVATE KEY' in last_pass:
+                keyfile = 'bandit%s.rsa' % hack_level
+                with open(keyfile, 'w') as filehandle:
+                    filehandle.write(last_pass)
+                    filehandle.close()
 
-            new_ssh_pass = hack_func(shell)
+                shell = ssh(
+                    'bandit%s' % hack_level,
+                    host=Bandit.URL,
+                    port=Bandit.PORT,
+                    keyfile=keyfile
+                )
+            else:
+                shell = ssh(
+                    'bandit%s' % hack_level,
+                    host=Bandit.URL,
+                    port=Bandit.PORT,
+                    password=last_pass
+                )
+
+            options = {
+                "shell": shell,
+                "level_pass": last_pass
+            }
+
+            new_ssh_pass = hack_func(options)
 
             shell.close()
 
@@ -71,6 +89,7 @@ class Bandit(object):
                 last_pass = new_ssh_pass
             else:
                 last_pass = None
+                break
 
         if level < max_level:
             info('Highest level reached: %s / %s' % (hack_level, max_level))
@@ -78,11 +97,11 @@ class Bandit(object):
             info('DONE!')
 
     @staticmethod
-    def level0(shell):
+    def level0(options):
         level1_password = None
 
         # wait for prompt
-        sh = shell.run('sh')
+        sh = options.get('shell').run('sh')
         sh.recvuntil('$ ', timeout=3)
 
         # get the password
@@ -95,11 +114,11 @@ class Bandit(object):
         return level1_password
 
     @staticmethod
-    def level1(shell):
+    def level1(options):
         level2_password = None
 
         # wait for prompt
-        sh = shell.run('sh')
+        sh = options.get('shell').run('sh')
         sh.recvuntil('$ ', timeout=3)
 
         # get the password
@@ -112,11 +131,11 @@ class Bandit(object):
         return level2_password
 
     @staticmethod
-    def level2(shell):
+    def level2(options):
         level3_password = None
 
         # wait for prompt
-        sh = shell.run('sh')
+        sh = options.get('shell').run('sh')
         sh.recvuntil('$ ', timeout=3)
 
         # get the password
@@ -129,11 +148,11 @@ class Bandit(object):
         return level3_password
 
     @staticmethod
-    def level3(shell):
+    def level3(options):
         level4_password = None
 
         # wait for prompt
-        sh = shell.run('sh')
+        sh = options.get('shell').run('sh')
         sh.recvuntil('$ ', timeout=3)
 
         # get the password
@@ -146,11 +165,11 @@ class Bandit(object):
         return level4_password
 
     @staticmethod
-    def level4(shell):
+    def level4(options):
         level5_password = None
 
         # wait for prompt
-        sh = shell.run('sh')
+        sh = options.get('shell').run('sh')
         sh.recvuntil('$ ', timeout=3)
 
         # get the password
@@ -163,11 +182,11 @@ class Bandit(object):
         return level5_password
 
     @staticmethod
-    def level5(shell):
+    def level5(options):
         level6_password = None
 
         # wait for prompt
-        sh = shell.run('sh')
+        sh = options.get('shell').run('sh')
         sh.recvuntil('$ ', timeout=3)
 
         # get the password
@@ -180,11 +199,11 @@ class Bandit(object):
         return level6_password
 
     @staticmethod
-    def level6(shell):
+    def level6(options):
         level7_password = None
 
         # wait for prompt
-        sh = shell.run('sh')
+        sh = options.get('shell').run('sh')
         sh.recvuntil('$ ', timeout=3)
 
         # get the password
@@ -197,11 +216,11 @@ class Bandit(object):
         return level7_password
 
     @staticmethod
-    def level7(shell):
+    def level7(options):
         level8_password = None
 
         # wait for prompt
-        sh = shell.run('sh')
+        sh = options.get('shell').run('sh')
         sh.recvuntil('$ ', timeout=3)
 
         # get the password
@@ -214,11 +233,11 @@ class Bandit(object):
         return level8_password
 
     @staticmethod
-    def level8(shell):
+    def level8(options):
         level9_password = None
 
         # wait for prompt
-        sh = shell.run('sh')
+        sh = options.get('shell').run('sh')
         sh.recvuntil('$ ', timeout=3)
 
         # get the password
@@ -231,11 +250,11 @@ class Bandit(object):
         return level9_password
 
     @staticmethod
-    def level9(shell):
+    def level9(options):
         level10_password = None
 
         # wait for prompt
-        sh = shell.run('sh')
+        sh = options.get('shell').run('sh')
         sh.recvuntil('$ ', timeout=3)
 
         # get the password
@@ -248,11 +267,11 @@ class Bandit(object):
         return level10_password
 
     @staticmethod
-    def level10(shell):
+    def level10(options):
         level11_password = None
 
         # wait for prompt
-        sh = shell.run('sh')
+        sh = options.get('shell').run('sh')
         sh.recvuntil('$ ', timeout=3)
 
         # get the password
@@ -265,11 +284,11 @@ class Bandit(object):
         return level11_password
 
     @staticmethod
-    def level11(shell):
+    def level11(options):
         level12_password = None
 
         # wait for prompt
-        sh = shell.run('sh')
+        sh = options.get('shell').run('sh')
         sh.recvuntil('$ ', timeout=3)
 
         # get the password
@@ -282,11 +301,11 @@ class Bandit(object):
         return level12_password
 
     @staticmethod
-    def level12(shell):
+    def level12(options):
         level13_password = None
 
         # wait for prompt
-        sh = shell.run('sh')
+        sh = options.get('shell').run('sh')
         sh.recvuntil('$ ', timeout=3)
 
         # get the password
@@ -328,9 +347,9 @@ class Bandit(object):
         return level13_password
 
     @staticmethod
-    def level13(shell):
+    def level13(options):
         # wait for prompt
-        sh = shell.run('sh')
+        sh = options.get('shell').run('sh')
         sh.recvuntil('$ ', timeout=3)
 
         # get the password
@@ -343,15 +362,17 @@ class Bandit(object):
         return level14_password
 
     @staticmethod
-    def level14(shell):
+    def level14(options):
         level15_password = None
 
         # wait for prompt
-        sh = shell.run('sh')
+        sh = options.get('shell').run('sh')
         sh.recvuntil('$ ', timeout=3)
 
+
         # get the password
-        sh.sendline('echo "4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e" | nc 0 30000 | egrep -o "\w{32}"')
+        cur_level_pass = options.get('level_pass')
+        sh.sendline('echo "%s" | nc 0 30000 | egrep -o "\w{32}"' % cur_level_pass)
         level15_password = sh.recvline().decode('utf8').strip()
 
         # close the shell
@@ -360,18 +381,66 @@ class Bandit(object):
         return level15_password
 
     @staticmethod
-    def level15(shell):
+    def level15(options):
         level16_password = None
 
         # wait for prompt
-        sh = shell.run('sh')
+        sh = options.get('shell').run('sh')
         sh.recvuntil('$ ', timeout=3)
 
         # get the password
-        sh.sendline('echo "BfMYroe26WYalil77FoDi9qh59eK5xNr" | openssl s_client -connect 0:30001 -quiet 2>/dev/null | egrep -o "\w{32}"')
+        cur_level_pass = options.get('level_pass')
+        sh.sendline('echo "%s" | openssl s_client -connect 0:30001 -quiet 2>/dev/null | egrep -o "\w{32}"' % cur_level_pass)
         level16_password = sh.recvline().decode('utf8').strip()
 
         # close the shell
         sh.close()
 
         return level16_password
+
+    @staticmethod
+    def level16(options):
+        level17_password = None
+
+        # wait for prompt
+        sh = options.get('shell').run('sh')
+        sh.recvuntil('$ ', timeout=3)
+
+        # find the ports to submit password on
+        sh.sendline('nmap 0 -p 31000-32000 | tail -n+7 | awk "{print \$1}" | egrep -o "[0-9]+"')
+        ports = sh.recvuntil('$ ').decode('utf8').replace('$ ', '').strip().split('\n')
+
+        sh.close()
+
+        cur_level_pass = options.get('level_pass')
+
+        for port in ports:
+            # try to get the password
+            sh = options.get('shell').run('openssl s_client -connect 0:%s -quiet 2>/dev/null' % port)
+            sh.sendline(cur_level_pass)
+            result_str = sh.recvline().decode('utf8').strip()
+
+            if result_str == 'Correct!':
+                level17_password = sh.recvuntil('END RSA PRIVATE KEY-----').decode('utf8').strip()
+
+            sh.close()
+
+            if level17_password:
+                break
+
+        return level17_password
+
+    @staticmethod
+    def level17(options):
+        (res, exit_code) = options.get('shell').run_to_end('diff passwords.old passwords.new | tail -1 | egrep -o "\w{32}"')
+        return res.decode('utf8').strip()
+
+    @staticmethod
+    def level18(options):
+        (res, exit_code) = options.get('shell').run_to_end('cat ./readme')
+        return res.decode('utf8').strip()
+
+    @staticmethod
+    def level19(options):
+        (res, exit_code) = options.get('shell').run_to_end('./bandit20-do cat /etc/bandit_pass/bandit20')
+        return res.decode('utf8').strip()
